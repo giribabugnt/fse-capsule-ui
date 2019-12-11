@@ -1,0 +1,105 @@
+<div>
+    <br />
+
+    <table width="100%">
+        <tr>
+            <td colspan="2">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Task</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="task" (blur)="filterTasks()">
+                </div>
+            </td>
+            <td colspan="2">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Parent Task</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="parentTask" (blur)="filterTasks()">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Priority From</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="priorityFrom" (blur)="filterTasks()">
+                </div>
+            </td>
+            <td>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Priority To</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="priorityTo" (blur)="filterTasks()">
+                </div>
+            </td>
+            <td>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Start Date</span>
+                    </div>
+                    <input type="date" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="startDate" (blur)="filterTasks()">
+                </div>
+            </td>
+            <td>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+                    </div>
+                    <input type="date" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-sm"
+                        [(ngModel)]="endDate" (blur)="filterTasks()">
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <div class="overflow-auto" style="height: 400px;">
+        <ng-container *ngFor="let task of tasks">
+            <div *ngIf="!task.hide">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Task</th>
+                            <th scope="col">Parent</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">End</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="25%">
+                                <textarea class="form-control" rows="1" id="comment" [(ngModel)]="task.task"
+                                    [disabled]="task.taskOpen == 'N'">{{task.task}}</textarea>
+                            </td>
+                            <td width="25%">
+                                <textarea class="form-control" rows="1" id="comment" [(ngModel)]="task.parentTask"
+                                    [disabled]="task.taskOpen == 'N'">{{task.parentTask}}</textarea>
+                            </td>
+                            <td>{{task.priority}}</td>
+                            <td>{{task.startDate}}</td>
+                            <td>{{task.endDate}}</td>
+                            <td width="25%">
+                                <button type="button" class="btn btn-secondary"
+                                    (click)="updateTask(task)">Edit</button>&nbsp;
+                                <button type="button" class="btn btn-secondary" (click)="endTask(task)">End
+                                    Task</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</div>

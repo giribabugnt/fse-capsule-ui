@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <h3>Task Manager</h3>
+    <ul class="nav nav-tabs" role="tablist" id="taskTab">
+        <li class="nav-item">
+            <a class="nav-link active" id="addTaskNav" data-toggle="tab" href="#addTask" role="tab">Add Task</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="viewTaskNav" data-toggle="tab" href="#viewTask" role="tab">View Task</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="taskTabContent">
+        <div role="tabpanel" class="tab-pane active" id="addTask" aria-labelledby="addTaskNav">
+            <add-task></add-task>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="viewTask" aria-labelledby="viewTaskNav">
+            <view-task></view-task>
+        </div>
+    </div>
+</div>
